@@ -1,0 +1,16 @@
+PODS:
+  - Hi-Home-Module (0.1.0)
+
+DEPENDENCIES:
+  - Hi-Home-Module (from `../`)
+
+EXTERNAL SOURCES:
+  Hi-Home-Module:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Hi-Home-Module: e17e4ccc231ff0de8d38ae01d5051c4838644179
+
+PODFILE CHECKSUM: 0f4d8b82567dfbfb786e05717ca7524672f5b0b5
+
+COCOAPODS: 1.10.0

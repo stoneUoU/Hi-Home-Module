@@ -35,6 +35,11 @@ TODO: Add long description of the pod here.
   # s.resource_bundles = {
   #   'Hi-Home-Module' => ['Hi-Home-Module/Assets/*.png']
   # }
+  
+  s.dependency 'Hi-Router-Module'
+  s.dependency 'Hi-Kit-Module'
+  
+  s.dependency 'SnapKit'
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'

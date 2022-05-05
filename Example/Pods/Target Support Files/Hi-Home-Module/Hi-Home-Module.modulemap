@@ -1,0 +1,6 @@
+framework module Hi_Home_Module {
+  umbrella header "Hi-Home-Module-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Hi-Home-Module",
+  "version": "0.1.0",
+  "summary": "A short description of Hi-Home-Module.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/linlei/Hi-Home-Module",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "linlei": "stoneuou@163.com"
+  },
+  "source": {
+    "git": "https://github.com/linlei/Hi-Home-Module.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source_files": "Hi-Home-Module/Classes/**/*"
+}
