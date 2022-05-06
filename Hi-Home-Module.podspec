@@ -30,17 +30,18 @@ TODO: Add long description of the pod here.
 
   s.ios.deployment_target = '9.0'
 
-  s.source_files = 'Hi-Home-Module/Classes/**/*'
+  s.source_files = 'Hi-Home-Module/Classes/**/*.{h,m,swift}'
   
-  # s.resource_bundles = {
-  #   'Hi-Home-Module' => ['Hi-Home-Module/Assets/*.png']
-  # }
+  s.resource_bundles = {
+    'Hi-Home-Module' => ['Hi-Home-Module/Resource/HiHomeModule.xcassets']
+  }
   
   s.dependency 'Hi-Router-Module'
   s.dependency 'Hi-Kit-Module'
   
   s.dependency 'SnapKit'
-
+  s.dependency 'SwiftyJSON'
+  
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'

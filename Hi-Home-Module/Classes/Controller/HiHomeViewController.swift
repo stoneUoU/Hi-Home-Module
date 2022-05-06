@@ -7,48 +7,23 @@
 
 import UIKit
 import SnapKit
+import Hi_Router_Module
+import SwiftyJSON
 
-class HiHomeViewController:UIViewController {
+public class HiHomeViewController:UIViewController {
     
     //MARK: LifeCycle
     deinit {
             
     }
-
-    //视图初始化
-    override func loadView() {
-        super.loadView()
-    }
         
     // 当加载视图结束时调用该方法
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         self.setUI();
-    }
-        
-    // 视图将要显示时调用该方法
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-        
-    // 当视图已经显示时调用该方法
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-        
-    // 当视图将要消失时调用该方法
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-    }
-        
-    // 当时图已经消失时调用该方法
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-    }
-        
-    // 当接收到内存警告时会执行这个方法
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+        self.homeView.homeModels = self.homeModels;
+        let json = "";
+        print(json);
     }
         
     //MARK: Public Method
@@ -56,23 +31,54 @@ class HiHomeViewController:UIViewController {
     //MARK: Private Method
 
     func setUI() {
+        self.view.addSubview(self.homeNavigationView);
         self.view.addSubview(self.homeView);
         self.setMas();
     }
         
     func setMas() {
+        self.homeNavigationView.snp.makeConstraints { make in
+            make.top.left.right.equalTo(self.view);
+            make.height.equalTo(HiStatusBarAndNavigationBarH);
+        }
         self.homeView.snp.makeConstraints { make in
-            make.edges.equalTo(self.view);
+            make.bottom.left.right.equalTo(self.view);
+            make.top.equalTo(self.homeNavigationView.snp.bottom);
         }
     }
         
     //MARK: lazy load
+    
+    lazy var homeNavigationView: HiHomeNavigationView = {[weak self] in
+      let homeNavigationView = HiHomeNavigationView()
+        homeNavigationView.handle = { [weak self]  in
+      }
+      return homeNavigationView
+    }()
+    
     lazy var homeView: HiHomeView = {[weak self] in
       let homeView = HiHomeView(frame:.zero)
         homeView.homeViewDelegate = self
         homeView.handle = { [weak self]  in
       }
       return homeView
+    }()
+    
+    lazy var homeModels:[HiHomeModel] = {
+        var homeModels:[HiHomeModel] = Array<HiHomeModel>();
+        for i in 0..<6 {
+            var homeModel:HiHomeModel = HiHomeModel();
+            homeModel.type = i;
+            for j in 0..<((i == 1) ? 7 : 5) {
+                let homeSonModel:HiHomeSonModel = HiHomeSonModel();
+                homeSonModel.titleStr = "民生科技";
+                homeSonModel.iconUrl = "";
+                homeSonModel.type = j;
+                homeModel.sonModels.append(homeSonModel);
+            }
+            homeModels.append(homeModel);
+        }
+        return homeModels;
     }()
 }
 
@@ -91,12 +97,9 @@ extension HiHomeViewController:HiHomeViewDelegate {
         let pamras: [String: Any] = ["id": "id123", "name": "name123", "image": UIImage()]
         self.pushRouterControllerWithUrl("home://place", parameters: pamras, animated: true) { parameters in
             // 页面参数回调
-            print("==========")
-            print("页面参数回调")
-            print("当前页面: A_Controller")
-            print("参数来自: apps://pathA_Detail")
-            print("参数内容: \(parameters)")
-            print("==========")
+            HiLog("==========")
+            HiLog("参数内容: \(parameters)");
+            HiLog("==========")
         }
     }
 }

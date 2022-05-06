@@ -9,6 +9,10 @@ import Foundation
 
 class HiHomeModel: NSObject {
     
+    var type:Int = 0;
+    
+    @objc var sonModels: [HiHomeSonModel] = [HiHomeSonModel]()
+    
 }
 
     
