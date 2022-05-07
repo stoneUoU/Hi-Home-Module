@@ -38,6 +38,18 @@ class HiHomeView: UIView {
     //MARK: Private Method
     //MARK: lazy load
     
+//    lazy var hiRefreshNormalHeader:HiRefreshHeader = {
+//        let hiRefreshHeaderClass = HiRefreshHeaderClass();
+//        let hiRefreshNormalHeader = hiRefreshHeaderClass.hiRefreshHeader;
+//        hiRefreshNormalHeader.setRefreshingTarget(self, refreshingAction: #selector(self.toFreshFunc));
+//        return hiRefreshNormalHeader
+//    }()
+    lazy var hiRefreshNormalHeader:HiRefreshHeader = {
+        let hiRefreshNormalHeader = HiRefreshHeader();
+        hiRefreshNormalHeader.setRefreshingTarget(self, refreshingAction: #selector(self.toFreshFunc));
+        return hiRefreshNormalHeader
+    }()
+    
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -57,6 +69,7 @@ class HiHomeView: UIView {
         collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "sectionFooter\(NSStringFromClass(UICollectionReusableView.self))")
         collectionView.showsVerticalScrollIndicator=false
         collectionView.showsHorizontalScrollIndicator=false;
+        collectionView.mj_header = self.hiRefreshNormalHeader;
         return collectionView
     }()
 }
@@ -205,4 +218,12 @@ extension HiHomeView:UICollectionViewDelegate, UICollectionViewDataSource,UIColl
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
 //        return 10;
 //    }
+}
+
+extension HiHomeView {
+    @objc func toFreshFunc(){
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.hiRefreshNormalHeader.endRefreshing();
+        }
+    }
 }

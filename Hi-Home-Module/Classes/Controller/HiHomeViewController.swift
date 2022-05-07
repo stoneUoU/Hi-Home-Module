@@ -22,8 +22,6 @@ public class HiHomeViewController:UIViewController {
         super.viewDidLoad()
         self.setUI();
         self.homeView.homeModels = self.homeModels;
-        let json = "";
-        print(json);
     }
         
     //MARK: Public Method
