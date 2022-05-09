@@ -10,7 +10,7 @@ import Hi_Kit_Module
 import Hi_Router_Module
 
 
-public typealias HiHomeNavigationViewHandle = () -> Void
+public typealias HiHomeNavigationViewHandle = (_ index:Int) -> Void
 
 class HiHomeNavigationView: UIView {
     
@@ -45,8 +45,8 @@ class HiHomeNavigationView: UIView {
     fileprivate lazy var noticeButton: UIButton = {
         let noticeButton = UIButton()
         noticeButton.setImage(UIImage.hi_image(named: "hi_home_notice.png", moduled: "Hi_Home_Module"), for: .normal);
-        noticeButton.tag = 0;
-        noticeButton.addTarget(self, action: #selector(toOperate(_:)), for: .touchUpInside)
+        noticeButton.tag = 1;
+        noticeButton.addTarget(self, action: #selector(toOperate(_:)), for: .touchUpInside);
         return noticeButton
     }()
     
@@ -89,6 +89,11 @@ class HiHomeNavigationView: UIView {
     }
     
     @objc func toOperate(_ sender : UIButton) {
+        print("\(sender.tag)");
+        guard let handle = self.handle else {
+            return
+        }
+        handle(sender.tag);
     }
     
     required init?(coder aDecoder: NSCoder) {

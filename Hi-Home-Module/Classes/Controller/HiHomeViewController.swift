@@ -23,6 +23,12 @@ public class HiHomeViewController:UIViewController {
         self.setUI();
         self.homeView.homeModels = self.homeModels;
     }
+    
+    open override func viewWillAppear(_ animated: Bool){
+        self.navigationItem.setHidesBackButton(true, animated: true)
+        self.navigationController?.navigationBar.isHidden = true
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
         
     //MARK: Public Method
       
@@ -31,6 +37,7 @@ public class HiHomeViewController:UIViewController {
     func setUI() {
         self.view.addSubview(self.homeNavigationView);
         self.view.addSubview(self.homeView);
+        self.view.bringSubviewToFront(self.homeNavigationView);
         self.setMas();
     }
         
@@ -49,8 +56,16 @@ public class HiHomeViewController:UIViewController {
     
     lazy var homeNavigationView: HiHomeNavigationView = {[weak self] in
       let homeNavigationView = HiHomeNavigationView()
-        homeNavigationView.handle = { [weak self]  in
-      }
+        homeNavigationView.handle = {(index) in
+            print("index = \(index)");
+            let pamras: [String: Any] = ["id": "id123", "name": "name123", "image": UIImage()]
+            self?.pushRouterControllerWithUrl("home://routeCode", parameters: pamras, animated: true) { parameters in
+                // 页面参数回调
+                HiLog("==========")
+                HiLog("参数内容: \(parameters)");
+                HiLog("==========")
+            }
+        }
       return homeNavigationView
     }()
     
@@ -93,7 +108,7 @@ extension HiHomeViewController {
 extension HiHomeViewController:HiHomeViewDelegate {
     func toOperate(view: HiHomeView) {
         let pamras: [String: Any] = ["id": "id123", "name": "name123", "image": UIImage()]
-        self.pushRouterControllerWithUrl("home://place", parameters: pamras, animated: true) { parameters in
+        self.pushRouterControllerWithUrl("home://routeCode", parameters: pamras, animated: true) { parameters in
             // 页面参数回调
             HiLog("==========")
             HiLog("参数内容: \(parameters)");

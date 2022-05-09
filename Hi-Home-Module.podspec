@@ -36,11 +36,13 @@ TODO: Add long description of the pod here.
     'Hi-Home-Module' => ['Hi-Home-Module/Resource/HiHomeModule.xcassets']
   }
   
-  s.dependency 'Hi-Router-Module'
+  s.dependency 'Hi-Router-Module', '0.2.0'
   s.dependency 'Hi-Kit-Module'
+  s.dependency 'Hi-Helper-Module'
   
   s.dependency 'SnapKit'
   s.dependency 'SwiftyJSON'
+  s.dependency 'MBProgressHUD'
   
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
