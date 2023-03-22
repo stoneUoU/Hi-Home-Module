@@ -122,7 +122,7 @@ extension HiHomeView:UICollectionViewDelegate, UICollectionViewDataSource,UIColl
         if (homeModel.type == 0) {
             let viewCell = collectionView.dequeueReusableCell(withReuseIdentifier: NSStringFromClass(HiHomeCollectionViewCell.self), for: indexPath) as! HiHomeCollectionViewCell;
             sonHomeModel.iconUrl = "易 联 众 民 生";
-            sonHomeModel.titleStr = "i O S 项 目 框 架";
+            sonHomeModel.titleStr = "S w i f t 项 目 框 架";
             viewCell.model = sonHomeModel;
             return viewCell;
         } else if (homeModel.type == 1) {
