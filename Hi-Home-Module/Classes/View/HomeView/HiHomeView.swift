@@ -13,7 +13,8 @@ import Hi_Kit_Module
 typealias HiHandle = () -> Void
 
 protocol HiHomeViewDelegate: AnyObject {
-    func toOperate(view:HiHomeView)
+    func toOperate(view:HiHomeView);
+    func toDo(indexPath:IndexPath);
 }
 class HiHomeView: UIView {
     var handle: HiHandle?
@@ -218,6 +219,10 @@ extension HiHomeView:UICollectionViewDelegate, UICollectionViewDataSource,UIColl
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
 //        return 10;
 //    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.homeViewDelegate?.toDo(indexPath: indexPath);
+    }
 }
 
 extension HiHomeView {

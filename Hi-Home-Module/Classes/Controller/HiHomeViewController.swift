@@ -115,4 +115,16 @@ extension HiHomeViewController:HiHomeViewDelegate {
             HiLog("==========")
         }
     }
+    
+    func toDo(indexPath: IndexPath) {
+        if (indexPath.section == 0) {
+            let pamras: [String: Any] = ["name": "iOS开发工程师","age":29];
+            self.pushRouterControllerWithUrl("home://sign", parameters: pamras, animated: true) { parameters in
+                // 页面参数回调
+                HiLog("==========")
+                HiLog("参数内容: \(parameters)");
+                HiLog("==========")
+            }
+        }
+    }
 }
