@@ -13,7 +13,7 @@ public class HiHomeModule: HiRouterModuleProtocol {
     public var module: String { "Hi_Home_Module" }
     public var scheme: String { "home" }
     public var pathDic: [String: String] {
-        ["home":"HiHomeViewController","routeCode":"HiRouteCodeViewController","present":"HiPresentViewController","sign":"HiSignViewController"]
+        ["home":"HiHomeViewController","routeCode":"HiRouteCodeViewController","present":"HiPresentViewController","sign":"HiSignViewController","site":"HiSiteViewController","filing":"HiFilingViewController"]
     }
     
     public class func registerPages() {

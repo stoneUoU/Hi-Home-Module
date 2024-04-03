@@ -39,7 +39,9 @@ TODO: Add long description of the pod here.
   s.dependency 'Hi-Router-Module', '0.2.0'
   s.dependency 'Hi-Kit-Module'
   s.dependency 'Hi-Helper-Module'
+  s.dependency 'Hi-Network-Module'
   
+  s.dependency 'HandyJSON'
   s.dependency 'SnapKit'
   s.dependency 'SwiftyJSON'
   s.dependency 'MBProgressHUD'

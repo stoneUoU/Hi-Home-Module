@@ -58,7 +58,7 @@ class HiSignViewController:UIViewController {
         
     // 当时图已经消失时调用该方法
     override func viewDidDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+        super.viewDidDisappear(animated)
     }
         
     // 当接收到内存警告时会执行这个方法

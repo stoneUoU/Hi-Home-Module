@@ -125,6 +125,22 @@ extension HiHomeViewController:HiHomeViewDelegate {
                 HiLog("参数内容: \(parameters)");
                 HiLog("==========")
             }
+        } else if (indexPath.section == 1) {
+            let pamras: [String: Any] = ["name": "iOS开发工程师","age":29];
+            self.pushRouterControllerWithUrl("home://site", parameters: pamras, animated: true) { parameters in
+                // 页面参数回调
+                HiLog("==========")
+                HiLog("参数内容: \(parameters)");
+                HiLog("==========")
+            }
+        } else if (indexPath.section == 2) {
+            let pamras: [String: Any] = ["name": "iOS开发工程师","age":29];
+            self.pushRouterControllerWithUrl("home://filing", parameters: pamras, animated: true) { parameters in
+                // 页面参数回调
+                HiLog("==========")
+                HiLog("参数内容: \(parameters)");
+                HiLog("==========")
+            }
         }
     }
 }
